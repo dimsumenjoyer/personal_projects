@@ -33,12 +33,12 @@ def find_total_time_in_bed(sleep_data_file):
     return total_time_in_bed
 
 def plot_sleep_data(dates, average_heart_rate, lowest_heart_rate, average_hrv, total_sleep_duration, time_in_bed):
-    plt.title("Victor's Sleep Data")
+    plt.title("Victor's Oura Ring Sleep Data")
     plt.xlabel("Time (Y-M)")
     plt.ylabel("Heart Rate (BPM)")
     plt.plot(dates, average_heart_rate, color = "red", label = "Average Heart Rate")
     plt.plot(dates, lowest_heart_rate, color = "blue", label = "Lowest Heart Rate")
-    #plt.plot(dates, average_hrv)
+    #plt.plot(dates, average_hrv, color = "purple", label = "Average Heart Rate Variability")
     plt.grid()
     plt.legend()
     plt.show()
