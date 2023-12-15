@@ -1,6 +1,8 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
+# Courtesy of Victor Van
+
 def file():
     data = pd.read_csv("solar spectra.csv").drop(list(range(48))) # Your data is a damn mess.
     data = data.iloc[:-1]
