@@ -9,7 +9,7 @@ def main():
 
 def generateBooleanValue():
     n = random.randint(1,  1000)
-    boolean = int(((1-(-1)**n))/2)
+    boolean = bool(((1-(-1)**n))/2)
     return boolean
 
 def generateBooleanValues(n):
