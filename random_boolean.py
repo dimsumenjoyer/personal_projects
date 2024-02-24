@@ -2,8 +2,8 @@ import random
 import matplotlib.pyplot as plt
 
 def main():
-    boolean_values1 = generateBooleanValues(500)
-    boolean_values2 = generateBooleanValues(500)
+    boolean_values1 = generateBooleanValues(994)
+    boolean_values2 = generateBooleanValues(994)
     plotBooleanValues(boolean_values1, boolean_values2)
     return
 
