@@ -1,52 +1,45 @@
 import numpy as np
 import sympy as sp
+from sympy import Matrix
 
-def fuck_my_life(v, h, theta):
-    d = (v**2 * np.sin(theta) * np.cos(theta) + v * np.cos(theta) * ((v * np.sin(theta))**2 + 64 * h)**(1/2))/32
-    return d
-    
-a1 = fuck_my_life(44,6.25,np.radians(40))
-a2 = fuck_my_life(44,6.25,np.radians(42.5))
-a3 = fuck_my_life(44,6.25,np.radians(45))
-a4 = fuck_my_life(44,6.25,np.degrees(40))
-a5 = fuck_my_life(44,6.25,np.degrees(42.5))
-a6 = fuck_my_life(44,6.25,np.degrees(45))
-#print(a1)
-#print(a2)
-#print(a3)
-#print("____________________________________")
-#print(a4)
-#print(a5)
-#print(a6)
-#print("____________________________________")
+def f(n):
+    return (8*n) / (((2*n - 1)**2) * ((2*n + 1)**2))
 
-b1 = fuck_my_life(35,6.25,np.radians(42.5))
-b2 = fuck_my_life(40,6.25,np.radians(42.5))
-b3 = fuck_my_life(45,6.25,np.radians(42.5))
-b4 = fuck_my_life(35,6.25,np.degrees(42.5))
-b5 = fuck_my_life(40,6.25,np.degrees(42.5))
-b6 = fuck_my_life(45,6.25,np.degrees(42.5))
-#print(b1)
-#print(b2)
-#print(b3)
-#print("____________________________________")
-#print(b4)
-#print(b5)
-#print(b6)
+def summation0():
+    ns = np.linspace(1,500000,500000)
+    ys = []
+    for i in range(len(ns)):
+        y = f(ns[i])
+        ys.append(y)
+    sum = np.sum(ys)
+    print(sum)
+    return
 
-A = sp.Matrix([
-        [1, 7, 4, 3],
-        [0, 1, 2, 3],
-        [3, 2, 0, 3],
-        [1, 3, 1, 3]
-    ])
+def summation(higher_order_function, lower_bound, upper_bound):
+    y = 0
+    for i in range(lower_bound, upper_bound):
+        y += higher_order_function(i)
+    return y
 
-#print(A.rref())
+def rowReduce():
+    m = Matrix(
+        [[1, 1, 0, 2],
+        [4, 2, 1, 7],
+        [4, 0, 0, 4]])
+    row_reduce = m.rref()
+    print(row_reduce)
+    return
 
-def definite_integral():
-    x = sp.symbols("x")
-    f = ((1/4)*x**5 - x**-3)
-    integral = sp.integrate(f,(x,1,2**(1/2)))
-    return integral
+def fibonacciSequence(n):
+    if n < 0:
+        print("Error: Invalid Input\n")
+    elif n == 0:
+        return 0
+    elif n == 1 or n == 2:
+        return 1
+    else:
+        return fibonacciSequence(n - 1) + fibonacciSequence(n - 2)
 
-print(definite_integral())
+#summation0()
+#print(summation(f, 1, 500000))
+print(summation(lambda n: (8*n) / (((2*n - 1)**2) * ((2*n + 1)**2)), 1, 500000))
